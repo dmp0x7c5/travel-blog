@@ -47,7 +47,6 @@ group :development do
   gem "guard-rspec", require: false
   gem "guard-rubocop", require: false
   gem "guard-shell", require: false
-  gem "guard-sidekiq"
 
   # spring
   gem "listen", ">= 3.0.5", "< 3.2"
@@ -59,10 +58,9 @@ group :test do
   gem "rspec-rails"
 
   # factories and helpers
-  gem "ffaker"
   gem "factory_bot_rails"
-  # shoulda-matchers master branch for Rails5 support
-  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
+  gem "ffaker"
+  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers" # locked for Rails5 support
   gem "timecop"
 
   # coverage
