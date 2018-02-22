@@ -1,47 +1,74 @@
-source 'https://rubygems.org'
+# frozen_string_literal: true
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+source "https://rubygems.org"
 
+# rails
+gem "rails", "~> 5.1.5"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
-# Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'puma', '~> 3.7'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# general gems
+gem "pg"
+gem "puma", "~> 3.7"
 
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+# frontend // just for activeadmin
+gem "sass-rails", "~> 5.0"
+gem "turbolinks", "~> 5"
+gem "uglifier", ">= 1.3.0"
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+# authentication & authorization
+# gem "devise", "~> 4.4" # version is locked as we have login issues on the 4.4
+# gem "doorkeeper"
+# gem "pundit"
+# gem "rack-attack"
+# gem "rack-cors"
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+# grape + jsonapi
+# gem "grape"
+# gem "grape-swagger"
+# gem "grape-swagger-rails"
+# gem "hashie-forbidden_attributes" # to make grape params validation work
+
+group :test, :development do
+  gem "pry-rails"
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # local config
+  gem "dotenv-rails"
+
+  # debug
+  gem "better_errors"
+  gem "bullet"
+  gem "letter_opener"
+  gem "web-console", ">= 3.3.0"
+
+  # guard
+  gem "guard-bundler", require: false
+  gem "guard-rails", require: false
+  gem "guard-rspec", require: false
+  gem "guard-rubocop", require: false
+  gem "guard-shell", require: false
+  gem "guard-sidekiq"
+
+  # spring
+  gem "listen", ">= 3.0.5", "< 3.2"
+  gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem "rspec-rails"
+
+  # factories and helpers
+  gem "ffaker"
+  gem "factory_bot_rails"
+  # shoulda-matchers master branch for Rails5 support
+  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers"
+  gem "timecop"
+
+  # coverage
+  gem "simplecov", require: false
+
+  # security
+  gem "brakeman", require: false
+  gem "bundler-audit", require: false
+end
