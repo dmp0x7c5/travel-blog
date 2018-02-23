@@ -32,6 +32,10 @@ group :test, :development do
 
   # local config
   gem "dotenv-rails"
+
+  # factories and helpers
+  gem "factory_bot_rails"
+  gem "ffaker"
 end
 
 group :development do
@@ -56,11 +60,8 @@ end
 
 group :test do
   gem "rspec-rails"
-
-  # factories and helpers
-  gem "factory_bot_rails"
-  gem "ffaker"
-  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers" # locked for Rails5 support
+  gem "shoulda-matchers", # locked for Rails5 support
+      git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "timecop"
 
   # coverage

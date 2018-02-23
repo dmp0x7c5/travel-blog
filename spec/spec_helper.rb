@@ -6,6 +6,7 @@ SimpleCov.profiles.define "travel-blog" do
   load_profile "rails"
   add_filter "app/admin"
 
+  add_filter "app/controllers/application_controller.rb"
   add_filter "app/jobs/application_job.rb"
   add_filter "app/mailers/application_mailer.rb"
   add_filter "app/policies/application_policy.rb"
@@ -22,13 +23,4 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
-  config.include FactoryBot::Syntax::Methods
-end
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
 end
