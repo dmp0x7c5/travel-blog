@@ -14,3 +14,11 @@
 !/tmp/.keep
 
 .byebug_history
+
+/coverage
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
+
+# Local env configuration
+.env

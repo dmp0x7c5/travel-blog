@@ -11,6 +11,7 @@ AllCops:
   - "config/deploy/**/*"
   - "deployment/**/*"
   - "config/initializers/**/*"
+  - "bin/*"
   DisplayCopNames: false
   StyleGuideCopsOnly: false
   TargetRubyVersion: 2.3

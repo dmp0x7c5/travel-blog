@@ -15,7 +15,7 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
 # authentication & authorization
-# gem "devise", "~> 4.4" # version is locked as we have login issues on the 4.4
+gem "devise", "~> 4.4.1"
 # gem "doorkeeper"
 # gem "pundit"
 # gem "rack-attack"
@@ -29,12 +29,16 @@ gem "uglifier", ">= 1.3.0"
 
 group :test, :development do
   gem "pry-rails"
-end
 
-group :development do
   # local config
   gem "dotenv-rails"
 
+  # factories and helpers
+  gem "factory_bot_rails"
+  gem "ffaker"
+end
+
+group :development do
   # debug
   gem "better_errors"
   gem "bullet"
@@ -56,11 +60,8 @@ end
 
 group :test do
   gem "rspec-rails"
-
-  # factories and helpers
-  gem "factory_bot_rails"
-  gem "ffaker"
-  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers" # locked for Rails5 support
+  gem "shoulda-matchers", # locked for Rails5 support
+      git: "https://github.com/thoughtbot/shoulda-matchers"
   gem "timecop"
 
   # coverage
