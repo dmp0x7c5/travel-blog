@@ -35,7 +35,8 @@ module TravelBlog
       authentication: :plain,
       enable_starttls_auto: true,
     }
-    config.action_mailer.default_url_options = { host: Rails.application.secrets.mailer_default_url }
+    config.action_mailer.default_url_options =
+      { host: Rails.application.secrets.mailer_default_url }
 
     config.time_zone = "Europe/Warsaw"
   end
