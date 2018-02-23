@@ -6,6 +6,7 @@ source "https://rubygems.org"
 gem "rails", "~> 5.1.5"
 
 # general gems
+gem "activeadmin"
 gem "pg"
 gem "puma", "~> 3.7"
 
@@ -16,8 +17,8 @@ gem "uglifier", ">= 1.3.0"
 
 # authentication & authorization
 gem "devise", "~> 4.4.1"
+gem "pundit"
 # gem "doorkeeper"
-# gem "pundit"
 # gem "rack-attack"
 # gem "rack-cors"
 
