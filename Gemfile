@@ -29,12 +29,12 @@ gem "devise", "~> 4.4.1"
 
 group :test, :development do
   gem "pry-rails"
+
+  # local config
+  gem "dotenv-rails"
 end
 
 group :development do
-  # local config
-  gem "dotenv-rails"
-
   # debug
   gem "better_errors"
   gem "bullet"
