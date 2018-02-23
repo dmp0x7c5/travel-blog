@@ -15,7 +15,7 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
 # authentication & authorization
-# gem "devise", "~> 4.4" # version is locked as we have login issues on the 4.4
+gem "devise", "~> 4.4.1"
 # gem "doorkeeper"
 # gem "pundit"
 # gem "rack-attack"
