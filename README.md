@@ -10,8 +10,8 @@ Blog backend using Grape API + Rails ActiveAdmin to manage content. App is a sho
 
 ## Docs
 
-Additional information can be found doc/ directory:
-- used gems and why?: [doc/Gems.md](doc/Gems.md)
+Additional information can be found docs/ directory:
+- used gems and why?: [docs/Gems.md](docs/Gems.md)
 
 
 ## Setup (local/dev)
