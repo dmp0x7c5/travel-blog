@@ -13,3 +13,5 @@ Dark side:
 - hard to communicate them without copy/paste - don't try to say them
 - rows are sorted randomly so without created_at you can't tell the order
 - more memory cause it's bigger than just integers
+
+Setup: https://github.com/dmp0x7c5/travel-blog/pull/4/files
