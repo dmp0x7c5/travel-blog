@@ -11,6 +11,7 @@ module API
 
       # include Rescuers
       helpers Pundit
+      helpers API::V1Helpers::Auth
 
       mount Posts::Base
     end

@@ -6,6 +6,7 @@ module API
       class Index < Base
         desc "Return all posts"
         get do
+          authorize Post, :index?
           Post.all
         end
       end
