@@ -22,11 +22,11 @@ gem "pundit"
 # gem "rack-attack"
 # gem "rack-cors"
 
-# grape + jsonapi
-# gem "grape"
-# gem "grape-swagger"
-# gem "grape-swagger-rails"
-# gem "hashie-forbidden_attributes" # to make grape params validation work
+# grape # + jsonapi
+gem "grape"
+gem "grape-swagger"
+gem "grape-swagger-rails"
+gem "hashie-forbidden_attributes" # to make grape params validation work
 
 group :test, :development do
   gem "pry-rails"
