@@ -4,10 +4,16 @@ module API
   module V1
     module Posts
       class Index < Base
-        desc "Return all posts"
+        desc "Return all posts with author included"
+
         get do
           authorize Post, :index?
-          Post.all
+
+          renderer.render(
+            Post.all,
+            class: { Post: PostSerializer, User: UserSerializer },
+            include: [:author],
+          )
         end
       end
     end
