@@ -27,6 +27,7 @@ gem "grape"
 gem "grape-swagger"
 gem "grape-swagger-rails"
 gem "hashie-forbidden_attributes" # to make grape params validation work
+gem "jsonapi-rb"
 
 group :test, :development do
   gem "pry-rails"
