@@ -2,11 +2,11 @@
 
 module API
   module V1Helpers
-    module Jsonapi
+    module JsonapiRender
       extend ::Grape::API::Helpers
 
       def renderer
-        ::JSONAPI::Serializable::Renderer.new
+        JSONAPI::Serializable::Renderer.new
       end
     end
   end

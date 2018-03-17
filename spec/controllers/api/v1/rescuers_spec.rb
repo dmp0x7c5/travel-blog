@@ -2,8 +2,7 @@
 
 require "rails_helper"
 
-describe "API: rescue exceptions", type: :request do
-
+describe "API: Rescuers concern", type: :request do
   class API::V1::Base < Grape::API
     get "rspec-exception-test" do
     end
@@ -15,7 +14,7 @@ describe "API: rescue exceptions", type: :request do
 
   before do
     allow_any_instance_of(Grape::Request).to receive(:params).and_raise(exception)
-    allow(Rails.env).to receive(:development?).and_return(development_flag)
+    allow(Rails.env).to receive(:production?).and_return(production_flag)
 
     subject
   end
@@ -28,7 +27,6 @@ describe "API: rescue exceptions", type: :request do
       expect(rsp).to have_key("backtrace")
       expect(rsp["description"]).to eq(exception_message)
       expect(rsp["klass"]).to eq(exception.class.to_s)
-      expect(rsp["status"]).to eq(status)
       expect(rsp["title"]).to eq(message)
     end
   end
@@ -37,19 +35,19 @@ describe "API: rescue exceptions", type: :request do
     it "responds with proper code and errors" do
       expect(response).to have_http_status(status)
 
-      response_body = { errors: [{ title: message, status: status }] }.to_json
+      response_body = { errors: [{ title: message }] }.to_json
       expect(response.body).to eq(response_body)
     end
   end
 
-  shared_examples "renders verbose errors for development and short for other envs" do
-    context "and in development env" do
-      let(:development_flag) { true }
+  shared_examples "renders verbose errors for non-production and short for production env" do
+    context "and in non-production env" do
+      let(:production_flag) { false }
       include_examples "verbose error messages"
     end
 
-    context "and in non-development env" do
-      let(:development_flag) { false }
+    context "and in production env" do
+      let(:production_flag) { true }
       include_examples "short error messages"
     end
   end
@@ -60,7 +58,7 @@ describe "API: rescue exceptions", type: :request do
       let(:message) { "You are not authorized to perform this action." }
       let(:status) { 401 }
 
-      include_examples "renders verbose errors for development and short for other envs"
+      include_examples "renders verbose errors for non-production and short for production env"
     end
 
     context "when dealing with ActiveRecord::RecordInvalid exception" do
@@ -69,7 +67,7 @@ describe "API: rescue exceptions", type: :request do
       let(:message) { "Record invalid" }
       let(:status) { 422 }
 
-      include_examples "renders verbose errors for development and short for other envs"
+      include_examples "renders verbose errors for non-production and short for production env"
     end
 
     context "when dealing with Grape::Exceptions::ValidationErrors exception" do
@@ -78,7 +76,7 @@ describe "API: rescue exceptions", type: :request do
       let(:message) { "Record invalid" }
       let(:status) { 422 }
 
-      include_examples "renders verbose errors for development and short for other envs"
+      include_examples "renders verbose errors for non-production and short for production env"
     end
 
     context "when dealing with ActiveRecord::RecordNotFound exception" do
@@ -86,23 +84,24 @@ describe "API: rescue exceptions", type: :request do
       let(:message) { "Record not found" }
       let(:status) { 404 }
 
-      include_examples "renders verbose errors for development and short for other envs"
+      include_examples "renders verbose errors for non-production and short for production env"
     end
 
     context "when dealing with RuntimeError exception" do
       let(:exception) { RuntimeError.new(exception_message) }
       let(:status) { 500 }
 
-      context "and in development env" do
-        let(:development_flag) { true }
+      context "and in non-production env" do
+        let(:production_flag) { false }
         let(:message) { exception_message }
 
         include_examples "verbose error messages"
       end
 
-      context "and in non-development env" do
+      context "and in production env" do
         let(:message) { "Something went wrong" }
-        let(:development_flag) { false }
+        let(:production_flag) { true }
+
         include_examples "short error messages"
       end
     end

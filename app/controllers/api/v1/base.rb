@@ -12,8 +12,8 @@ module API
 
       helpers Pundit
       helpers V1Helpers::Auth
-      helpers V1Helpers::Errors
-      helpers V1Helpers::Jsonapi
+      helpers V1Helpers::JsonapiErrors
+      helpers V1Helpers::JsonapiRender
 
       mount Posts::Base
     end
