@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "jsonapi/serializable"
+
 module API
   class Root < Grape::API
     prefix :api

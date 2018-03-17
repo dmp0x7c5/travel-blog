@@ -5,13 +5,15 @@ module API
     class Base < Grape::API
       version "v1", using: :path, vendor: "travel-blog"
 
-      # formatter :json, Grape::Formatter::TODO
       content_type :json, "application/vnd.api+json"
       default_format :json
 
-      # include Rescuers
+      include Rescuers
+
       helpers Pundit
-      helpers API::V1Helpers::Auth
+      helpers V1Helpers::Auth
+      helpers V1Helpers::JsonapiErrors
+      helpers V1Helpers::JsonapiRender
 
       mount Posts::Base
     end

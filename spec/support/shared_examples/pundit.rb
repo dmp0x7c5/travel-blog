@@ -25,3 +25,17 @@ shared_examples "grants access to everybody" do
     it_behaves_like "grants access"
   end
 end
+
+shared_context "not authorized" do |policy_class, policy_method, effect = false|
+  before do
+    policy = instance_double("policy", policy_method => effect)
+    allow(policy_class).to receive(:new).and_return(policy)
+  end
+end
+
+shared_context "authorized" do |policy_class, policy_method, effect = true|
+  before do
+    policy = instance_double("policy", policy_method => effect)
+    allow(policy_class).to receive(:new).and_return(policy)
+  end
+end

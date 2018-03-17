@@ -23,7 +23,9 @@ module TravelBlog
     config.load_defaults 5.1
     config.generators.system_tests = nil
 
+    config.paths.add File.join("app", "serializers"), glob: File.join("**", "*.rb")
     config.paths.add File.join("app", "services"), glob: File.join("**", "*.rb")
+
     config.paths.add "lib", eager_load: true
 
     ActionMailer::Base.smtp_settings = {

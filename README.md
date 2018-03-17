@@ -14,7 +14,6 @@ Additional information can be found docs/ directory:
 - gems including tips and reasoning: [docs/Gems.md](docs/Gems.md)
 - patterns in the project: [docs/Patterns.md](docs/Patterns.md)
 
-
 ## Setup (local/dev)
 
 ### 1. Automated
@@ -48,7 +47,7 @@ API documentation is generated with [grape-swagger](https://github.com/tim-vande
 
 ## Admin Panel
 
-Visit ```/backdoor/login``` path.
+Visit ```/admin/login``` path (replace admin with ACTIVE_ADMIN_NAMESPACE env if set).
 
 Protop: Do not use obvious names for admin path
 
