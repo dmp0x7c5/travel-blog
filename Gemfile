@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # rails
-gem "rails", "~> 5.1.5"
+gem "rails", "~> 5.1.6"
 
 # general gems
 gem "activeadmin"
